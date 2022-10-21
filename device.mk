@@ -55,3 +55,9 @@ $(call inherit-product, device/motorola/sm4250-common/platform.mk)
 
 # include board vendor blobs
 $(call inherit-product-if-exists, vendor/motorola/caprip/caprip-vendor.mk)
+
+
+
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay-lineage
