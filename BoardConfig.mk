@@ -29,17 +29,20 @@ TARGET_BOOTLOADER_BOARD_NAME := caprip
 # Platform
 PRODUCT_PLATFORM := bengal
 
+TARGET_BUILDS_AOSP := false
+ifeq ($(TARGET_BUILDS_AOSP),true)
 # Kernel DTB/DTBO
 BOARD_PREBUILT_DTBIMAGE_DIR := device/motorola/sm4250-common-kernel/dtb
 BOARD_PREBUILT_DTBOIMAGE := device/motorola/sm4250-common-kernel/dtbo.img
-ifeq ($(TARGET_BUILDS_AOSP),true)
 TARGET_PREBUILT_KERNEL := device/motorola/sm4250-common-kernel/bengal-moto-guamc-Image.gz
 
 # Kernel Modules
 BOARD_VENDOR_KERNEL_MODULES := \
     $(wildcard device/motorola/sm4250-common-kernel/modules/*.ko)
 else
+BOARD_KERNEL_SEPARATED_DTBO := true
 TARGET_KERNEL_CONFIG := vendor/bengal-moto-guamc_defconfig
+TARGET_KERNEL_SOURCE := kernel/motorola/msm-4.19
 endif
 
 # Partition information
