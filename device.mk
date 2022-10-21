@@ -62,6 +62,13 @@ $(call inherit-product, device/motorola/sm4250-common/platform.mk)
 # include board vendor blobs
 $(call inherit-product-if-exists, vendor/motorola/caprip/caprip-vendor.mk)
 
+# for capri this is false
+# enable 4G by default
+# stereo isnt available for calling in capri
+PRODUCT_PRODUCT_PROPERTIES += \
+ro.telephony.default_network=10,10 \
+persist.vendor.audio.voicecall.speaker.stereo=false \
+ro.build.tags=blah-keys
 
 
 # Overlays
